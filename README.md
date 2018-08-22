@@ -1,3 +1,34 @@
+# Fortunate
+
+A versitle data store, ideal for a web application or API server
+
+## Fields
+
+The core provides the following fields:
+
+### `id`
+
+Don't set `{ id: true }`! Every model automatically has an ID.
+
+### `createdAt`
+
+### `updatedAt`
+
+### `deletedAt`
+
+## Attributes
+
+The core provides the following attributes:
+
+### `createdAt`
+
+### `updatedAt`
+
+### `deletedAt`
+
+
+----
+
 generate routes from exposed resources (core)
 models can auto-map to a resource (core)
 users can authenticate (local-login, more?)
