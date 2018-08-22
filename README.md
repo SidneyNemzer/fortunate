@@ -1,6 +1,48 @@
 # Fortunate
 
-A versitle data store, ideal for a web application or API server
+A versatile data store, ideal for a web application or API server. This package is fortunate core, which allows you to define your application's data schema.
+
+```js
+const user = {
+  name: 'user',
+  fields: {
+    username: true,
+    password: true,
+    roles: true
+  },
+  permissions: [
+    allow('read', 'USER'),
+    allow('*', 'OWNER', 'ADMIN')
+  ]
+}
+
+const post = {
+  name: 'post',
+  fields: {
+    title: String,
+    body: String,
+    hash: {
+      type: String,
+      unique: true,
+      permissions: [ deny('update', 'OWNER') ]
+    },
+    author: { type: 'user', owner: true }
+  },
+  permissions: [
+    allow('*', 'OWNER')
+  ]
+}
+
+const resources = fortunate({
+  models: [
+    user
+  ],
+  plugins: [
+    loginPlugin(),
+    accessPlugin()
+  ]
+})
+```
 
 ## Fields
 
@@ -20,12 +62,19 @@ Don't set `{ id: true }`! Every model automatically has an ID.
 
 The core provides the following attributes:
 
+### `type`
+
 ### `createdAt`
 
 ### `updatedAt`
 
 ### `deletedAt`
 
+### `unique`
+
+### `relation`
+
+### `default`
 
 ----
 
